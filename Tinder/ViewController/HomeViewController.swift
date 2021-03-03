@@ -18,13 +18,12 @@ class HomeViewController: UIViewController {
 
     private func setupView() {
         
-        let view1 = TopControlView()
+        let topControlView = TopControlView()
         
-        let view2 = UIView()
-        view2.backgroundColor = .blue
+        let cardView = CardView()
         let buttomControllView = BottomControllView()
         
-        let views = [view1, view2, buttomControllView]
+        let views = [topControlView, cardView, buttomControllView]
         let stackView = UIStackView(arrangedSubviews: views)
         stackView.axis = .vertical
         self.view.addSubview(stackView)
@@ -32,7 +31,7 @@ class HomeViewController: UIViewController {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
         [
-            view1.heightAnchor.constraint(equalToConstant: 100),
+            topControlView.heightAnchor.constraint(equalToConstant: 100),
             buttomControllView.heightAnchor.constraint(equalToConstant: 120),
             stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),

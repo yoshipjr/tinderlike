@@ -11,6 +11,7 @@
 		7D0F062225D9511400B334E9 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 7D0F062125D9511400B334E9 /* RxCocoa */; };
 		7D0F062425D9511400B334E9 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 7D0F062325D9511400B334E9 /* RxRelay */; };
 		7D5C36FA25EF6669006B6CE3 /* UIvew+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5C36F925EF6669006B6CE3 /* UIvew+Extension.swift */; };
+		7D5C36FF25EF8089006B6CE3 /* CardVeiw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5C36FE25EF8089006B6CE3 /* CardVeiw.swift */; };
 		7DF9D77C25CFCD3400150154 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF9D77B25CFCD3400150154 /* AppDelegate.swift */; };
 		7DF9D77E25CFCD3400150154 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF9D77D25CFCD3400150154 /* SceneDelegate.swift */; };
 		7DF9D78025CFCD3400150154 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF9D77F25CFCD3400150154 /* HomeViewController.swift */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		7D5C36F925EF6669006B6CE3 /* UIvew+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIvew+Extension.swift"; sourceTree = "<group>"; };
+		7D5C36FE25EF8089006B6CE3 /* CardVeiw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardVeiw.swift; sourceTree = "<group>"; };
 		7DF9D77825CFCD3400150154 /* Tinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DF9D77B25CFCD3400150154 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7DF9D77D25CFCD3400150154 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 			children = (
 				7DFE501825D9434B00142A6E /* TopControlView.swift */,
 				7DFE500A25D90A6300142A6E /* BottomControllView.swift */,
+				7D5C36FE25EF8089006B6CE3 /* CardVeiw.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				7DFE501425D9395000142A6E /* UIImage+Extension.swift in Sources */,
 				7DFE501925D9434B00142A6E /* TopControlView.swift in Sources */,
 				7DF9D77C25CFCD3400150154 /* AppDelegate.swift in Sources */,
+				7D5C36FF25EF8089006B6CE3 /* CardVeiw.swift in Sources */,
 				7DF9D77E25CFCD3400150154 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
