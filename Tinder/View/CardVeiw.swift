@@ -69,6 +69,7 @@ final class CardView: UIView {
     
     @objc private func panCardView(gesture: UIPanGestureRecognizer) {
         let translation = gesture.translation(in: self)
+        // 動きがある場合の動き
         if gesture.state == .changed {
             self.transform = CGAffineTransform(translationX: translation.x, y: translation.y)
         } else if gesture.state == .ended {
@@ -78,8 +79,8 @@ final class CardView: UIView {
 //                self.layoutIfNeeded()
 //            }
             let animation = UIViewPropertyAnimator(duration: 0.3, curve: .easeInOut) {
+                //元に戻す動き
                 self.transform = .identity
-                self.layoutIfNeeded()
             }
             animation.startAnimation()
         }
