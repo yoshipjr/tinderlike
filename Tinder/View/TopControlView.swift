@@ -62,13 +62,8 @@ class TopControlView: UIView {
         stackView.spacing = 40
         stackView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(stackView)
-            
-        [
-        stackView.topAnchor.constraint(equalTo: topAnchor),
-        stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
-        stackView.leftAnchor.constraint(equalTo: leftAnchor, constant: 40),
-        stackView.rightAnchor.constraint(equalTo: rightAnchor, constant: -40)
-        ].forEach { $0.isActive = true }
+        
+        stackView.anchor(top: topAnchor, bottom: bottomAnchor, left: leftAnchor, right: rightAnchor, leftPadding: 40, rightPadding: 40)
     }
     
     private func setupBindings() {
