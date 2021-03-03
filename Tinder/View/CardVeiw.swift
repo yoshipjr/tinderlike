@@ -72,10 +72,16 @@ final class CardView: UIView {
         if gesture.state == .changed {
             self.transform = CGAffineTransform(translationX: translation.x, y: translation.y)
         } else if gesture.state == .ended {
-            UIView.animate(withDuration: 0.3) {
+            // animationの記述方法を変更
+//            UIView.animate(withDuration: 0.3) {
+//                self.transform = .identity
+//                self.layoutIfNeeded()
+//            }
+            let animation = UIViewPropertyAnimator(duration: 0.3, curve: .easeInOut) {
                 self.transform = .identity
                 self.layoutIfNeeded()
             }
+            animation.startAnimation()
         }
     }
     
