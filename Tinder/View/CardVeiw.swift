@@ -29,24 +29,71 @@ final class CardView: UIView {
     let infoButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "comment_active"), for: .normal)
-//        button.imageView?.backgroundColor = .black
+        button.tintColor = .white
+        button.imageView?.contentMode = .scaleToFill
         return button
     }()
+    
+    let residenceLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 20, weight: .regular)
+        label.textColor = .white
+        label.text = "Japan Osaka"
+        return label
+    }()
+    
+    let hobbyLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 25, weight: .regular)
+        label.textColor = .white
+        label.text = "running"
+        return label
+    }()
+    
+    let introductionLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 25, weight: .regular)
+        label.textColor = .white
+        label.text = "I love running"
+        return label
+    }()
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        let baseStackView = UIStackView(arrangedSubviews: [infoButton])
-        baseStackView.axis = .horizontal
+        setupLayout()
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panCardView))
+        self.addGestureRecognizer(panGesture)
+    }
+    
+    @objc private func panCardView(gesture: UIPanGestureRecognizer) {
+        let translation = gesture.translation(in: self)
+        if gesture.state == .changed {
+            self.transform = CGAffineTransform(translationX: translation.x, y: translation.y)
+        } else if gesture.state == .ended {
+            UIView.animate(withDuration: 0.3) {
+                self.transform = .identity
+                self.layoutIfNeeded()
+            }
+        }
+    }
+    
+    private func setupLayout() {
+        let infoVerticalStackview = UIStackView(arrangedSubviews: [residenceLabel, hobbyLabel, introductionLabel])
+        infoVerticalStackview.axis = .vertical
         
+        let baseStackView = UIStackView(arrangedSubviews: [infoVerticalStackview, infoButton])
+        baseStackView.axis = .horizontal
         
         addSubview(cardImageView)
         addSubview(nameLabel)
         addSubview(baseStackView)
         
-        cardImageView.anchor(top: topAnchor, bottom: bottomAnchor, left: leftAnchor, right: rightAnchor, leftPadding: 10, rightPadding: -10)
+        cardImageView.anchor(top: topAnchor, bottom: bottomAnchor, left: leftAnchor, right: rightAnchor, leftPadding: 10, rightPadding: 10)
+        infoButton.anchor(width: 40)
         baseStackView.anchor(bottom: cardImageView.bottomAnchor, left: cardImageView.leftAnchor, right: cardImageView.rightAnchor, bottomPadding: 20, leftPadding: 20, rightPadding: 20)
-        nameLabel.anchor(bottom: cardImageView.bottomAnchor, left: cardImageView.leftAnchor, bottomPadding: 40, leftPadding: 20)
+        nameLabel.anchor(bottom: baseStackView.topAnchor, left: cardImageView.leftAnchor, bottomPadding: 10, leftPadding: 20)
     }
     
     required init?(coder: NSCoder) {
