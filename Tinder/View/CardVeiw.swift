@@ -58,7 +58,13 @@ final class CardView: UIView {
         return label
     }()
     
-    
+    let goodLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 45)
+        label.text = "GOOD"
+        
+        return label
+    }()
     
     
     override init(frame: CGRect) {
