@@ -59,6 +59,8 @@ final class CardView: UIView {
     }()
     
     
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -71,19 +73,34 @@ final class CardView: UIView {
         let translation = gesture.translation(in: self)
         // 動きがある場合の動き
         if gesture.state == .changed {
-            self.transform = CGAffineTransform(translationX: translation.x, y: translation.y)
+            self.handlePanChange(translation: translation)
         } else if gesture.state == .ended {
             // animationの記述方法を変更
 //            UIView.animate(withDuration: 0.3) {
 //                self.transform = .identity
 //                self.layoutIfNeeded()
 //            }
-            let animation = UIViewPropertyAnimator(duration: 0.3, curve: .easeInOut) {
-                //元に戻す動き
-                self.transform = .identity
-            }
-            animation.startAnimation()
+            self.handlePanEnded()
         }
+    }
+    
+    private func handlePanChange(translation: CGPoint) {
+        let degree = translation.x / 20
+        let angle = degree * .pi / 100 // .pi　円周率を取得するプロパティ
+        let rotateTranslation = CGAffineTransform(rotationAngle: angle)
+        self.transform = rotateTranslation.translatedBy(x: translation.x, y: translation.y)
+//        self.transform = CGAffineTransform(translationX: translation.x, y: translation.y)
+    }
+    
+    private func handlePanEnded() {
+//        let animation = UIViewPropertyAnimator(duration: 0.3, curve: .easeInOut) {
+//            //元に戻す動き
+//            self.transform = .identity
+//        }
+        let animation = UIViewPropertyAnimator(duration: 1, dampingRatio: 0.5) {
+            self.transform = .identity
+        }
+        animation.startAnimation()
     }
     
     private func setupLayout() {
