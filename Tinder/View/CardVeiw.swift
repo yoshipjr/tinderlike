@@ -63,6 +63,12 @@ final class CardView: UIView {
         label.font = .systemFont(ofSize: 45)
         label.text = "GOOD"
         
+        label.layer.borderWidth = 3
+        label.layer.borderColor = UIColor.rgb(red: 137, green: 223, blue: 86).cgColor
+        label.layer.cornerRadius = 10
+        
+        label.textColor = UIColor.rgb(red: 137, green: 223, blue: 86)
+        label.textAlignment = .center
         return label
     }()
     
@@ -119,11 +125,13 @@ final class CardView: UIView {
         addSubview(cardImageView)
         addSubview(nameLabel)
         addSubview(baseStackView)
+        addSubview(goodLabel)
         
         cardImageView.anchor(top: topAnchor, bottom: bottomAnchor, left: leftAnchor, right: rightAnchor, leftPadding: 10, rightPadding: 10)
         infoButton.anchor(width: 40)
         baseStackView.anchor(bottom: cardImageView.bottomAnchor, left: cardImageView.leftAnchor, right: cardImageView.rightAnchor, bottomPadding: 20, leftPadding: 20, rightPadding: 20)
         nameLabel.anchor(bottom: baseStackView.topAnchor, left: cardImageView.leftAnchor, bottomPadding: 10, leftPadding: 20)
+        goodLabel.anchor(top: cardImageView.topAnchor, left: cardImageView.leftAnchor, width: 140, height: 55, topPadding: 25, leftPadding: 20)
     }
     
     required init?(coder: NSCoder) {
