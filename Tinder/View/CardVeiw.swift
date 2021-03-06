@@ -14,7 +14,9 @@ final class CardView: UIView {
         let iv = UIImageView()
         iv.backgroundColor = .brown
         iv.layer.cornerRadius = 10
-        iv.contentMode = .scaleToFill
+        iv.contentMode = .scaleAspectFill
+        iv.clipsToBounds = true
+        iv.image = UIImage(named: "test_sample")
         return iv
     }()
     
@@ -66,6 +68,7 @@ final class CardView: UIView {
         label.layer.borderWidth = 3
         label.layer.borderColor = UIColor.rgb(red: 137, green: 223, blue: 86).cgColor
         label.layer.cornerRadius = 10
+        label.alpha = 0
         
         label.textColor = UIColor.rgb(red: 137, green: 223, blue: 86)
         label.textAlignment = .center
@@ -80,6 +83,7 @@ final class CardView: UIView {
         label.layer.borderWidth = 3
         label.layer.borderColor = UIColor.rgb(red: 222, green: 110, blue: 110).cgColor
         label.layer.cornerRadius = 10
+        label.alpha = 0
         
         label.textColor = .rgb(red: 222, green: 110, blue: 110)
         label.textAlignment = .center
