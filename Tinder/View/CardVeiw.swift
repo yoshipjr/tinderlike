@@ -10,6 +10,10 @@ import UIKit
 
 final class CardView: UIView {
     
+    private let nopeLabel = CardInfoLabel(frame: .zero, type: .nope)
+    
+    private let goodLabel = CardInfoLabel(frame: .zero, type: .good)
+    
     let cardImageView: UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .brown
@@ -59,37 +63,6 @@ final class CardView: UIView {
         label.text = "I love running"
         return label
     }()
-    
-    let goodLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 45)
-        label.text = "GOOD"
-        
-        label.layer.borderWidth = 3
-        label.layer.borderColor = UIColor.rgb(red: 137, green: 223, blue: 86).cgColor
-        label.layer.cornerRadius = 10
-        label.alpha = 0
-        
-        label.textColor = UIColor.rgb(red: 137, green: 223, blue: 86)
-        label.textAlignment = .center
-        return label
-    }()
-    
-    let nopeLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 45)
-        label.text = "NOPE"
-        
-        label.layer.borderWidth = 3
-        label.layer.borderColor = UIColor.rgb(red: 222, green: 110, blue: 110).cgColor
-        label.layer.cornerRadius = 10
-        label.alpha = 0
-        
-        label.textColor = .rgb(red: 222, green: 110, blue: 110)
-        label.textAlignment = .center
-        return label
-    }()
-    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
