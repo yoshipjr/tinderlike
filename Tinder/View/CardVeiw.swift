@@ -119,7 +119,15 @@ final class CardView: UIView {
         let angle = degree * .pi / 100 // .pi　円周率を取得するプロパティ
         let rotateTranslation = CGAffineTransform(rotationAngle: angle)
         self.transform = rotateTranslation.translatedBy(x: translation.x, y: translation.y)
-//        self.transform = CGAffineTransform(translationX: translation.x, y: translation.y)
+        let ratio: CGFloat = 1 / 100
+        let ratioValue = ratio * translation.x
+        
+        // 画像を右に動かすと、translationがプラスになって、左に動かすとーになる
+        if translation.x > 100 {
+            goodLabel.alpha = ratioValue
+        } else if translation.x < 100 {
+            nopeLabel.alpha = -ratioValue
+        }
     }
     
     private func handlePanEnded() {
@@ -129,6 +137,9 @@ final class CardView: UIView {
 //        }
         let animation = UIViewPropertyAnimator(duration: 1, dampingRatio: 0.5) {
             self.transform = .identity
+            [self.goodLabel, self.nopeLabel].forEach {
+                $0.alpha = 0
+            }
         }
         animation.startAnimation()
     }
