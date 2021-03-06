@@ -72,6 +72,20 @@ final class CardView: UIView {
         return label
     }()
     
+    let nopeLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 45)
+        label.text = "NOPE"
+        
+        label.layer.borderWidth = 3
+        label.layer.borderColor = UIColor.rgb(red: 222, green: 110, blue: 110).cgColor
+        label.layer.cornerRadius = 10
+        
+        label.textColor = .rgb(red: 222, green: 110, blue: 110)
+        label.textAlignment = .center
+        return label
+    }()
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -122,16 +136,22 @@ final class CardView: UIView {
         let baseStackView = UIStackView(arrangedSubviews: [infoVerticalStackview, infoButton])
         baseStackView.axis = .horizontal
         
-        addSubview(cardImageView)
-        addSubview(nameLabel)
-        addSubview(baseStackView)
-        addSubview(goodLabel)
+        [
+            cardImageView,
+            nameLabel,
+            baseStackView,
+            goodLabel,
+            nopeLabel
+        ].forEach {
+            addSubview($0)
+        }
         
         cardImageView.anchor(top: topAnchor, bottom: bottomAnchor, left: leftAnchor, right: rightAnchor, leftPadding: 10, rightPadding: 10)
         infoButton.anchor(width: 40)
         baseStackView.anchor(bottom: cardImageView.bottomAnchor, left: cardImageView.leftAnchor, right: cardImageView.rightAnchor, bottomPadding: 20, leftPadding: 20, rightPadding: 20)
         nameLabel.anchor(bottom: baseStackView.topAnchor, left: cardImageView.leftAnchor, bottomPadding: 10, leftPadding: 20)
         goodLabel.anchor(top: cardImageView.topAnchor, left: cardImageView.leftAnchor, width: 140, height: 55, topPadding: 25, leftPadding: 20)
+        nopeLabel.anchor(top: cardImageView.topAnchor, right: cardImageView.rightAnchor, width: 140, height: 55, topPadding: 25, rightPadding: 20)
     }
     
     required init?(coder: NSCoder) {
