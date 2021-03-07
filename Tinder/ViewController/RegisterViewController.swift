@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import RxSwift
 import FirebaseAuth
+import FirebaseFirestore
 
 class RegisterViewController: UIViewController {
     private let disposeBag = DisposeBag()
@@ -89,7 +90,26 @@ class RegisterViewController: UIViewController {
                 return
             }
             
-            print("auth情報の保存に成功しました", uid)
+            self.setUserDataToFirestore(uid: uid, email: email)
+        }
+    }
+    
+    private func setUserDataToFirestore(uid: String, email: String) {
+        
+        guard let name = nameTextField .text else { return }
+        let document = [
+            "name" : name,
+            "email" : email,
+            "createdAt" : Timestamp()
+        ] as [String : Any]
+        
+        Firestore.firestore().collection("users").document(uid).setData(document) {
+            err in
+            if let err = err {
+                print("ユーザー情報の保存に失敗", err)
+                return
+            }
+            print("ユーザー情報の保存に成功")
         }
     }
 }
