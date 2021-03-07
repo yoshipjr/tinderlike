@@ -69,13 +69,27 @@ class RegisterViewController: UIViewController {
             
         }.disposed(by: disposeBag)
         
-        registerButton.rx.tap.asDriver().drive { (<#Void#>) in
-            <#code#>
+        registerButton.rx.tap.asDriver().drive { [weak self]_ in
+            self?.createUserToFireAuth()
         }.disposed(by: disposeBag)
 
     }
     
     private func createUserToFireAuth() {
-        
+        guard let email = emailTextField.text, let password = passwordTextField.text else {
+            return
+        }
+        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+            if let error = error {
+                print("auth情報の保存に失敗", error)
+                return
+            }
+            
+            guard let uid = result?.user.uid else {
+                return
+            }
+            
+            print("auth情報の保存に成功しました", uid)
+        }
     }
 }
