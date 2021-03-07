@@ -13,6 +13,7 @@ import FirebaseFirestore
 
 class RegisterViewController: UIViewController {
     private let disposeBag = DisposeBag()
+    private let viewModel = RegisterViewModel()
     
     // MARK: UIView
     private let titleLabel: UILabel = RegisterTitleLabel()
@@ -57,17 +58,18 @@ class RegisterViewController: UIViewController {
     private func setupBinding() {
         nameTextField.rx.text.asDriver().drive { [weak self] text in
             // text情報のハンドル
+            self?.viewModel.namtTextInput.onNext(text ?? "")
             
         }.disposed(by: disposeBag)
         
         emailTextField.rx.text.asDriver().drive { [weak self] text in
             // text情報のハンドル
-            
+            self?.viewModel.emailTextInput.onNext(text ?? "")
         }.disposed(by: disposeBag)
         
         passwordTextField.rx.text.asDriver().drive { [weak self] text in
             // text情報のハンドル
-            
+            self?.viewModel.passwordTextInput.onNext(text ?? "")
         }.disposed(by: disposeBag)
         
         registerButton.rx.tap.asDriver().drive { [weak self]_ in
