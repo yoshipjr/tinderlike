@@ -13,8 +13,8 @@ final class CardView: UIView {
     private let gradientLayer = CAGradientLayer()
     
     // MARK: UIView
-    private let nopeLabel = CardInfoLabel(frame: .zero, type: .nope)
-    private let goodLabel = CardInfoLabel(frame: .zero, type: .good)
+    private let nopeLabel = CardInfoLabel(type: .nope)
+    private let goodLabel = CardInfoLabel(type: .good)
     private let infoButton = UIButton(type: .system).createCardInfoButton()
     private let cardImageView = CardImageView(frame: .zero)
     

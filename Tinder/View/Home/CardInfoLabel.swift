@@ -34,9 +34,16 @@ class CardInfoLabel: UILabel {
         
     }
     
-    init(frame: CGRect, type: Labeltype) {
-        super.init(frame: frame)
+    init(type: Labeltype) {
+        super.init(frame: .zero)
         setupLabel(type: type)
+    }
+    
+    init(frame: CGRect, labelText: String, labelFont: UIFont) {
+        super.init(frame: frame)
+        font = labelFont
+        textColor = .white
+        text = labelText
     }
     
     required init?(coder: NSCoder) {
