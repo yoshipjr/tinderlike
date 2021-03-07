@@ -10,8 +10,10 @@ import UIKit
 
 final class CardView: UIView {
     
-    private let nopeLabel = CardInfoLabel(frame: .zero, type: .nope)
+    private let gradientLayer = CAGradientLayer()
     
+    // MARK: UIView
+    private let nopeLabel = CardInfoLabel(frame: .zero, type: .nope)
     private let goodLabel = CardInfoLabel(frame: .zero, type: .good)
     private let infoButton = UIButton(type: .system).createCardInfoButton()
     private let cardImageView = CardImageView(frame: .zero)
@@ -23,14 +25,6 @@ final class CardView: UIView {
         label.text = "Taro 22"
         return label
     }()
-    
-//    let infoButton: UIButton = {
-//        let button = UIButton()
-//        button.setImage(UIImage(named: "comment_active"), for: .normal)
-//        button.tintColor = .white
-//        button.imageView?.contentMode = .scaleToFill
-//        return button
-//    }()
     
     let residenceLabel: UILabel = {
         let label = UILabel()
@@ -77,6 +71,16 @@ final class CardView: UIView {
 //            }
             self.handlePanEnded()
         }
+    }
+    
+    private func setupGradientLayer() {
+        gradientLayer.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
+        gradientLayer.locations = [0.3, 1.1]
+        cardImageView.layer.addSublayer(gradientLayer)
+    }
+    
+    override func layoutSubviews() {
+        gradientLayer.frame = self.bounds
     }
     
     private func handlePanChange(translation: CGPoint) {
