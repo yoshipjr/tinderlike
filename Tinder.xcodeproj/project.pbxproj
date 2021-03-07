@@ -17,6 +17,7 @@
 		7D1FBB2725F4572D0002248E /* CardImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1FBB2625F4572D0002248E /* CardImageView.swift */; };
 		7D1FBB2C25F472B30002248E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7D1FBB2B25F472B30002248E /* GoogleService-Info.plist */; };
 		7D1FBB4125F4833B0002248E /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1FBB4025F4833B0002248E /* RegisterViewController.swift */; };
+		7D1FBB4825F499E20002248E /* RegisterTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1FBB4725F499E20002248E /* RegisterTextField.swift */; };
 		7D5C36FA25EF6669006B6CE3 /* UIvew+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5C36F925EF6669006B6CE3 /* UIvew+Extension.swift */; };
 		7D5C36FF25EF8089006B6CE3 /* CardVeiw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5C36FE25EF8089006B6CE3 /* CardVeiw.swift */; };
 		7DF9D77C25CFCD3400150154 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF9D77B25CFCD3400150154 /* AppDelegate.swift */; };
@@ -59,6 +60,7 @@
 		7D1FBB2625F4572D0002248E /* CardImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardImageView.swift; sourceTree = "<group>"; };
 		7D1FBB2B25F472B30002248E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7D1FBB4025F4833B0002248E /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		7D1FBB4725F499E20002248E /* RegisterTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTextField.swift; sourceTree = "<group>"; };
 		7D5C36F925EF6669006B6CE3 /* UIvew+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIvew+Extension.swift"; sourceTree = "<group>"; };
 		7D5C36FE25EF8089006B6CE3 /* CardVeiw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardVeiw.swift; sourceTree = "<group>"; };
 		7DF9D77825CFCD3400150154 /* Tinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,6 +119,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7D1FBB4525F499B80002248E /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				7DFE501825D9434B00142A6E /* TopControlView.swift */,
+				7DFE500A25D90A6300142A6E /* BottomControllView.swift */,
+				7D5C36FE25EF8089006B6CE3 /* CardVeiw.swift */,
+				7D1FBB1C25F3C0730002248E /* CardInfoLabel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		7D1FBB4625F499CA0002248E /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				7D1FBB4725F499E20002248E /* RegisterTextField.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
 		7DF9D76F25CFCD3400150154 = {
 			isa = PBXGroup;
 			children = (
@@ -197,10 +218,8 @@
 		7DFE501D25D9438000142A6E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				7DFE501825D9434B00142A6E /* TopControlView.swift */,
-				7DFE500A25D90A6300142A6E /* BottomControllView.swift */,
-				7D5C36FE25EF8089006B6CE3 /* CardVeiw.swift */,
-				7D1FBB1C25F3C0730002248E /* CardInfoLabel.swift */,
+				7D1FBB4625F499CA0002248E /* Register */,
+				7D1FBB4525F499B80002248E /* Home */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -477,6 +496,7 @@
 				7DFE500B25D90A6300142A6E /* BottomControllView.swift in Sources */,
 				7DF9D78025CFCD3400150154 /* HomeViewController.swift in Sources */,
 				7D1FBB1D25F3C0730002248E /* CardInfoLabel.swift in Sources */,
+				7D1FBB4825F499E20002248E /* RegisterTextField.swift in Sources */,
 				7D1FBB2225F452690002248E /* UIButton+Extension.swift in Sources */,
 				7D5C36FA25EF6669006B6CE3 /* UIvew+Extension.swift in Sources */,
 				7D1FBB1825F385400002248E /* UIColor+Extension.swift in Sources */,
