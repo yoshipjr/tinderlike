@@ -13,16 +13,8 @@ final class CardView: UIView {
     private let nopeLabel = CardInfoLabel(frame: .zero, type: .nope)
     
     private let goodLabel = CardInfoLabel(frame: .zero, type: .good)
-    
-    let cardImageView: UIImageView = {
-        let iv = UIImageView()
-        iv.backgroundColor = .brown
-        iv.layer.cornerRadius = 10
-        iv.contentMode = .scaleAspectFill
-        iv.clipsToBounds = true
-        iv.image = UIImage(named: "test_sample")
-        return iv
-    }()
+    private let infoButton = UIButton(type: .system).createCardInfoButton()
+    private let cardImageView = CardImageView(frame: .zero)
     
     let nameLabel: UILabel = {
         let label = UILabel()
@@ -32,13 +24,13 @@ final class CardView: UIView {
         return label
     }()
     
-    let infoButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: "comment_active"), for: .normal)
-        button.tintColor = .white
-        button.imageView?.contentMode = .scaleToFill
-        return button
-    }()
+//    let infoButton: UIButton = {
+//        let button = UIButton()
+//        button.setImage(UIImage(named: "comment_active"), for: .normal)
+//        button.tintColor = .white
+//        button.imageView?.contentMode = .scaleToFill
+//        return button
+//    }()
     
     let residenceLabel: UILabel = {
         let label = UILabel()
