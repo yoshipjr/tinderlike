@@ -25,6 +25,23 @@ class RegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupGradientLayer()
+        setupLayout()
+    }
+    
+    private func setupGradientLayer() {
+        let layer = CAGradientLayer()
+        let startColor = UIColor.rgb(red: 227, green: 48, blue: 78)
+        let endColor = UIColor.rgb(red: 245, green: 208, blue: 108)
+        
+        layer.colors = [startColor, endColor]
+        layer.locations = [0.0, 1.3]
+        
+        layer.frame = view.bounds
+        view.layer.addSublayer(layer)
+    }
+    
+    private func setupLayout() {
         view.backgroundColor = .blue
         
         let baseStackView = UIStackView(arrangedSubviews: [ nameTextField, emailTextField, passwordTextField, registerButton])
