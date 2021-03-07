@@ -7,8 +7,13 @@
 
 import Foundation
 import UIKit
+import RxSwift
+import FirebaseAuth
 
 class RegisterViewController: UIViewController {
+    private let disposeBag = DisposeBag()
+    
+    // MARK: UIView
     private let titleLabel: UILabel = RegisterTitleLabel()
     private let nameTextField: UITextField = RegisterTextField.init(frame: .zero, type: .name)
     private let emailTextField: UITextField = RegisterTextField.init(frame: .zero, type: .email)
@@ -19,6 +24,7 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
         setupGradientLayer()
         setupLayout()
+        setupBinding()
     }
     
     private func setupGradientLayer() {
@@ -45,5 +51,31 @@ class RegisterViewController: UIViewController {
         nameTextField.anchor(height: 45)
         baseStackView.anchor(left: view.leftAnchor, right: view.rightAnchor, centerY: view.centerYAnchor, height: 200, leftPadding: 20, rightPadding: 20)
         titleLabel.anchor(bottom: baseStackView.topAnchor, centerX: view.centerXAnchor, bottomPadding: 20)
+    }
+    
+    private func setupBinding() {
+        nameTextField.rx.text.asDriver().drive { [weak self] text in
+            // text情報のハンドル
+            
+        }.disposed(by: disposeBag)
+        
+        emailTextField.rx.text.asDriver().drive { [weak self] text in
+            // text情報のハンドル
+            
+        }.disposed(by: disposeBag)
+        
+        passwordTextField.rx.text.asDriver().drive { [weak self] text in
+            // text情報のハンドル
+            
+        }.disposed(by: disposeBag)
+        
+        registerButton.rx.tap.asDriver().drive { (<#Void#>) in
+            <#code#>
+        }.disposed(by: disposeBag)
+
+    }
+    
+    private func createUserToFireAuth() {
+        
     }
 }
