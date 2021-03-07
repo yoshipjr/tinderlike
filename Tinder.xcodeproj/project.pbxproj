@@ -19,6 +19,7 @@
 		7D1FBB4125F4833B0002248E /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1FBB4025F4833B0002248E /* RegisterViewController.swift */; };
 		7D1FBB4825F499E20002248E /* RegisterTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1FBB4725F499E20002248E /* RegisterTextField.swift */; };
 		7D1FBB5325F49D400002248E /* RegisterTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1FBB5225F49D400002248E /* RegisterTitleLabel.swift */; };
+		7D1FBB5825F4A7800002248E /* RegisterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1FBB5725F4A7800002248E /* RegisterButton.swift */; };
 		7D5C36FA25EF6669006B6CE3 /* UIvew+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5C36F925EF6669006B6CE3 /* UIvew+Extension.swift */; };
 		7D5C36FF25EF8089006B6CE3 /* CardVeiw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5C36FE25EF8089006B6CE3 /* CardVeiw.swift */; };
 		7DF9D77C25CFCD3400150154 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF9D77B25CFCD3400150154 /* AppDelegate.swift */; };
@@ -63,6 +64,7 @@
 		7D1FBB4025F4833B0002248E /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		7D1FBB4725F499E20002248E /* RegisterTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTextField.swift; sourceTree = "<group>"; };
 		7D1FBB5225F49D400002248E /* RegisterTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTitleLabel.swift; sourceTree = "<group>"; };
+		7D1FBB5725F4A7800002248E /* RegisterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterButton.swift; sourceTree = "<group>"; };
 		7D5C36F925EF6669006B6CE3 /* UIvew+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIvew+Extension.swift"; sourceTree = "<group>"; };
 		7D5C36FE25EF8089006B6CE3 /* CardVeiw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardVeiw.swift; sourceTree = "<group>"; };
 		7DF9D77825CFCD3400150154 /* Tinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,6 +139,7 @@
 			children = (
 				7D1FBB4725F499E20002248E /* RegisterTextField.swift */,
 				7D1FBB5225F49D400002248E /* RegisterTitleLabel.swift */,
+				7D1FBB5725F4A7800002248E /* RegisterButton.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D1FBB5825F4A7800002248E /* RegisterButton.swift in Sources */,
 				7DFE500B25D90A6300142A6E /* BottomControllView.swift in Sources */,
 				7DF9D78025CFCD3400150154 /* HomeViewController.swift in Sources */,
 				7D1FBB5325F49D400002248E /* RegisterTitleLabel.swift in Sources */,

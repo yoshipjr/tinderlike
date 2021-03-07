@@ -13,15 +13,7 @@ class RegisterViewController: UIViewController {
     private let nameTextField: UITextField = RegisterTextField.init(frame: .zero, type: .name)
     private let emailTextField: UITextField = RegisterTextField.init(frame: .zero, type: .email)
     private let passwordTextField: UITextField = RegisterTextField.init(frame: .zero, type: .password)
-    
-    let registerButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("登録", for: .normal)
-        button.backgroundColor = .red
-        button.setTitleColor(.white, for: .normal)
-        button.layer.cornerRadius = 10
-        return button
-    }()
+    private let registerButton: UIButton = RegisterButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +23,8 @@ class RegisterViewController: UIViewController {
     
     private func setupGradientLayer() {
         let layer = CAGradientLayer()
-        let startColor = UIColor.rgb(red: 227, green: 48, blue: 78)
-        let endColor = UIColor.rgb(red: 245, green: 208, blue: 108)
+        let startColor = UIColor.rgb(red: 227, green: 48, blue: 78).cgColor
+        let endColor = UIColor.rgb(red: 245, green: 208, blue: 108).cgColor
         
         layer.colors = [startColor, endColor]
         layer.locations = [0.0, 1.3]
@@ -42,8 +34,6 @@ class RegisterViewController: UIViewController {
     }
     
     private func setupLayout() {
-        view.backgroundColor = .blue
-        
         let baseStackView = UIStackView(arrangedSubviews: [ nameTextField, emailTextField, passwordTextField, registerButton])
         baseStackView.axis = .vertical
         baseStackView.distribution = .fillEqually
