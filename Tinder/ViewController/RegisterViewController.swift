@@ -9,9 +9,11 @@ import Foundation
 import UIKit
 import RxSwift
 import FirebaseAuth
+import FirebaseFirestore
 
 class RegisterViewController: UIViewController {
     private let disposeBag = DisposeBag()
+    private let viewModel = RegisterViewModel()
     
     // MARK: UIView
     private let titleLabel: UILabel = RegisterTitleLabel()
@@ -56,17 +58,18 @@ class RegisterViewController: UIViewController {
     private func setupBinding() {
         nameTextField.rx.text.asDriver().drive { [weak self] text in
             // text情報のハンドル
+            self?.viewModel.namtTextInput.onNext(text ?? "")
             
         }.disposed(by: disposeBag)
         
         emailTextField.rx.text.asDriver().drive { [weak self] text in
             // text情報のハンドル
-            
+            self?.viewModel.emailTextInput.onNext(text ?? "")
         }.disposed(by: disposeBag)
         
         passwordTextField.rx.text.asDriver().drive { [weak self] text in
             // text情報のハンドル
-            
+            self?.viewModel.passwordTextInput.onNext(text ?? "")
         }.disposed(by: disposeBag)
         
         registerButton.rx.tap.asDriver().drive { [weak self]_ in
@@ -89,7 +92,26 @@ class RegisterViewController: UIViewController {
                 return
             }
             
-            print("auth情報の保存に成功しました", uid)
+            self.setUserDataToFirestore(uid: uid, email: email)
+        }
+    }
+    
+    private func setUserDataToFirestore(uid: String, email: String) {
+        
+        guard let name = nameTextField .text else { return }
+        let document = [
+            "name" : name,
+            "email" : email,
+            "createdAt" : Timestamp()
+        ] as [String : Any]
+        
+        Firestore.firestore().collection("users").document(uid).setData(document) {
+            err in
+            if let err = err {
+                print("ユーザー情報の保存に失敗", err)
+                return
+            }
+            print("ユーザー情報の保存に成功")
         }
     }
 }

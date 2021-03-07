@@ -18,7 +18,7 @@ class RegisterTextField: UITextField {
         var value: String {
             switch  self {
             case .password:
-                return "登録"
+                return "パスワード"
             case .email:
                 return "メールアドレス"
             case .name:
