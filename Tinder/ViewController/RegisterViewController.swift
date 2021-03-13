@@ -98,40 +98,40 @@ class RegisterViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    private func createUserToFireAuth() {
-        guard let email = emailTextField.text, let password = passwordTextField.text else {
-            return
-        }
-        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
-            if let error = error {
-                print("auth情報の保存に失敗", error)
-                return
-            }
-            
-            guard let uid = result?.user.uid else {
-                return
-            }
-            
-            self.setUserDataToFirestore(uid: uid, email: email)
-        }
-    }
-    
-    private func setUserDataToFirestore(uid: String, email: String) {
-        
-        guard let name = nameTextField .text else { return }
-        let document = [
-            "name" : name,
-            "email" : email,
-            "createdAt" : Timestamp()
-        ] as [String : Any]
-        
-        Firestore.firestore().collection("users").document(uid).setData(document) {
-            err in
-            if let err = err {
-                print("ユーザー情報の保存に失敗", err)
-                return
-            }
-            print("ユーザー情報の保存に成功")
-        }
-    }
+//    private func createUserToFireAuth() {
+//        guard let email = emailTextField.text, let password = passwordTextField.text else {
+//            return
+//        }
+//        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+//            if let error = error {
+//                print("auth情報の保存に失敗", error)
+//                return
+//            }
+//
+//            guard let uid = result?.user.uid else {
+//                return
+//            }
+//
+//            self.setUserDataToFirestore(uid: uid, email: email)
+//        }
+//    }
+//
+//    private func setUserDataToFirestore(uid: String, email: String) {
+//
+//        guard let name = nameTextField .text else { return }
+//        let document = [
+//            "name" : name,
+//            "email" : email,
+//            "createdAt" : Timestamp()
+//        ] as [String : Any]
+//
+//        Firestore.firestore().collection("users").document(uid).setData(document) {
+//            err in
+//            if let err = err {
+//                print("ユーザー情報の保存に失敗", err)
+//                return
+//            }
+//            print("ユーザー情報の保存に成功")
+//        }
+//    }
 }

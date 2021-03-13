@@ -21,6 +21,7 @@
 		7D1FBB5325F49D400002248E /* RegisterTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1FBB5225F49D400002248E /* RegisterTitleLabel.swift */; };
 		7D1FBB5825F4A7800002248E /* RegisterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1FBB5725F4A7800002248E /* RegisterButton.swift */; };
 		7D1FBB7825F4FCE60002248E /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1FBB7725F4FCE60002248E /* RegisterViewModel.swift */; };
+		7D1FBCA525FCB0100002248E /* Firebase+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1FBCA425FCB00F0002248E /* Firebase+Extension.swift */; };
 		7D5C36FA25EF6669006B6CE3 /* UIvew+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5C36F925EF6669006B6CE3 /* UIvew+Extension.swift */; };
 		7D5C36FF25EF8089006B6CE3 /* CardVeiw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5C36FE25EF8089006B6CE3 /* CardVeiw.swift */; };
 		7DF9D77C25CFCD3400150154 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF9D77B25CFCD3400150154 /* AppDelegate.swift */; };
@@ -67,6 +68,7 @@
 		7D1FBB5225F49D400002248E /* RegisterTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTitleLabel.swift; sourceTree = "<group>"; };
 		7D1FBB5725F4A7800002248E /* RegisterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterButton.swift; sourceTree = "<group>"; };
 		7D1FBB7725F4FCE60002248E /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		7D1FBCA425FCB00F0002248E /* Firebase+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Firebase+Extension.swift"; sourceTree = "<group>"; };
 		7D5C36F925EF6669006B6CE3 /* UIvew+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIvew+Extension.swift"; sourceTree = "<group>"; };
 		7D5C36FE25EF8089006B6CE3 /* CardVeiw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardVeiw.swift; sourceTree = "<group>"; };
 		7DF9D77825CFCD3400150154 /* Tinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -228,6 +230,7 @@
 				7D1FBB1725F385400002248E /* UIColor+Extension.swift */,
 				7D1FBB2125F452690002248E /* UIButton+Extension.swift */,
 				7D1FBB2625F4572D0002248E /* CardImageView.swift */,
+				7D1FBCA425FCB00F0002248E /* Firebase+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -522,6 +525,7 @@
 				7D1FBB7825F4FCE60002248E /* RegisterViewModel.swift in Sources */,
 				7DFE501425D9395000142A6E /* UIImage+Extension.swift in Sources */,
 				7DFE501925D9434B00142A6E /* TopControlView.swift in Sources */,
+				7D1FBCA525FCB0100002248E /* Firebase+Extension.swift in Sources */,
 				7DF9D77C25CFCD3400150154 /* AppDelegate.swift in Sources */,
 				7D5C36FF25EF8089006B6CE3 /* CardVeiw.swift in Sources */,
 				7D1FBB4125F4833B0002248E /* RegisterViewController.swift in Sources */,
