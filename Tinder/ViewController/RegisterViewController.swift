@@ -56,26 +56,46 @@ class RegisterViewController: UIViewController {
     }
     
     private func setupBinding() {
-        nameTextField.rx.text.asDriver().drive { [weak self] text in
-            // text情報のハンドル
-            self?.viewModel.namtTextInput.onNext(text ?? "")
-            
-        }.disposed(by: disposeBag)
+        // textFieldのbinding
+        nameTextField.rx.text
+            .asDriver()
+            .drive { [weak self] text in
+                self?.viewModel.nameTextInput.onNext(text ?? "")
+                // textの情報ハンドル
+            }
+            .disposed(by: disposeBag)
         
-        emailTextField.rx.text.asDriver().drive { [weak self] text in
-            // text情報のハンドル
-            self?.viewModel.emailTextInput.onNext(text ?? "")
-        }.disposed(by: disposeBag)
+        emailTextField.rx.text
+            .asDriver()
+            .drive { [weak self] text in
+                self?.viewModel.emailTextInput.onNext(text ?? "")
+                // textの情報ハンドル
+            }
+            .disposed(by: disposeBag)
         
-        passwordTextField.rx.text.asDriver().drive { [weak self] text in
-            // text情報のハンドル
-            self?.viewModel.passwordTextInput.onNext(text ?? "")
-        }.disposed(by: disposeBag)
+        passwordTextField.rx.text
+            .asDriver()
+            .drive { [weak self] text in
+                self?.viewModel.passwordTextInput.onNext(text ?? "")
+                // textの情報ハンドル
+            }
+            .disposed(by: disposeBag)
         
-        registerButton.rx.tap.asDriver().drive { [weak self]_ in
-            self?.createUserToFireAuth()
-        }.disposed(by: disposeBag)
-
+        registerButton.rx.tap
+            .asDriver()
+            .drive { [weak self] _ in
+                // 登録時の処理
+                self?.createUserToFireAuth()
+            }
+            .disposed(by: disposeBag)
+        
+        // viewmodelのbinding
+        viewModel.validRegisterDriver
+            .drive { validAll in
+                self.registerButton.isEnabled = validAll
+                self.registerButton.backgroundColor = validAll ? .rgb(red: 227, green: 48, blue: 78) : .init(white: 0.7, alpha: 1)
+            }
+            .disposed(by: disposeBag)
     }
     
     private func createUserToFireAuth() {
