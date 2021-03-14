@@ -105,6 +105,7 @@ class RegisterViewController: UIViewController {
                                   name: nameTextField.text) {  result in
             if result {
                 print("処理が完了", result)
+                self.dismiss(animated: true)
             } else {
                 print("処理が失敗")
             }
