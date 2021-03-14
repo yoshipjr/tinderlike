@@ -21,6 +21,7 @@ class RegisterViewController: UIViewController {
     private let emailTextField: UITextField = RegisterTextField.init(frame: .zero, type: .email)
     private let passwordTextField: UITextField = RegisterTextField.init(frame: .zero, type: .password)
     private let registerButton: UIButton = RegisterButton()
+    private let alreadyHaveAcctountButton = UIButton(type: .system).createAboutAccountButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,10 +50,12 @@ class RegisterViewController: UIViewController {
         
         view.addSubview(baseStackView)
         view.addSubview(titleLabel)
+        view.addSubview(alreadyHaveAcctountButton)
         
         nameTextField.anchor(height: 45)
         baseStackView.anchor(left: view.leftAnchor, right: view.rightAnchor, centerY: view.centerYAnchor, height: 200, leftPadding: 20, rightPadding: 20)
         titleLabel.anchor(bottom: baseStackView.topAnchor, centerX: view.centerXAnchor, bottomPadding: 20)
+        alreadyHaveAcctountButton.anchor(top: baseStackView.bottomAnchor, centerX: view.centerXAnchor, topPadding: 10)
     }
     
     private func setupBinding() {

@@ -23,6 +23,7 @@
 		7D1FBB7825F4FCE60002248E /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1FBB7725F4FCE60002248E /* RegisterViewModel.swift */; };
 		7D1FBCA525FCB0100002248E /* Firebase+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1FBCA425FCB00F0002248E /* Firebase+Extension.swift */; };
 		7D1FBCAB25FCB2140002248E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1FBCAA25FCB2140002248E /* User.swift */; };
+		7D1FBCB325FE32AF0002248E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1FBCB225FE32AB0002248E /* LoginViewController.swift */; };
 		7D5C36FA25EF6669006B6CE3 /* UIvew+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5C36F925EF6669006B6CE3 /* UIvew+Extension.swift */; };
 		7D5C36FF25EF8089006B6CE3 /* CardVeiw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5C36FE25EF8089006B6CE3 /* CardVeiw.swift */; };
 		7DF9D77C25CFCD3400150154 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF9D77B25CFCD3400150154 /* AppDelegate.swift */; };
@@ -71,6 +72,7 @@
 		7D1FBB7725F4FCE60002248E /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		7D1FBCA425FCB00F0002248E /* Firebase+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Firebase+Extension.swift"; sourceTree = "<group>"; };
 		7D1FBCAA25FCB2140002248E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		7D1FBCB225FE32AB0002248E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7D5C36F925EF6669006B6CE3 /* UIvew+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIvew+Extension.swift"; sourceTree = "<group>"; };
 		7D5C36FE25EF8089006B6CE3 /* CardVeiw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardVeiw.swift; sourceTree = "<group>"; };
 		7DF9D77825CFCD3400150154 /* Tinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -229,6 +231,7 @@
 			children = (
 				7DF9D77F25CFCD3400150154 /* HomeViewController.swift */,
 				7D1FBB4025F4833B0002248E /* RegisterViewController.swift */,
+				7D1FBCB225FE32AB0002248E /* LoginViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -532,6 +535,7 @@
 				7D1FBB4825F499E20002248E /* RegisterTextField.swift in Sources */,
 				7D1FBB2225F452690002248E /* UIButton+Extension.swift in Sources */,
 				7D5C36FA25EF6669006B6CE3 /* UIvew+Extension.swift in Sources */,
+				7D1FBCB325FE32AF0002248E /* LoginViewController.swift in Sources */,
 				7D1FBB1825F385400002248E /* UIColor+Extension.swift in Sources */,
 				7D1FBB7825F4FCE60002248E /* RegisterViewModel.swift in Sources */,
 				7DFE501425D9395000142A6E /* UIImage+Extension.swift in Sources */,

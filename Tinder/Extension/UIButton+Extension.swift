@@ -14,4 +14,10 @@ extension UIButton {
         self.imageView?.contentMode = .scaleToFill
         return self
     }
+    
+    func createAboutAccountButton() -> UIButton {
+        self.setTitle("既にアカウントをお持ちの方はこちら", for: .normal)
+        self.titleLabel?.font = .systemFont(ofSize: 14)
+        return self
+    }
 }
