@@ -56,62 +56,59 @@ class RegisterViewController: UIViewController {
     }
     
     private func setupBinding() {
-        nameTextField.rx.text.asDriver().drive { [weak self] text in
-            // text情報のハンドル
-            self?.viewModel.namtTextInput.onNext(text ?? "")
-            
-        }.disposed(by: disposeBag)
+        // textFieldのbinding
+        nameTextField.rx.text
+            .asDriver()
+            .drive { [weak self] text in
+                self?.viewModel.nameTextInput.onNext(text ?? "")
+                // textの情報ハンドル
+            }
+            .disposed(by: disposeBag)
         
-        emailTextField.rx.text.asDriver().drive { [weak self] text in
-            // text情報のハンドル
-            self?.viewModel.emailTextInput.onNext(text ?? "")
-        }.disposed(by: disposeBag)
+        emailTextField.rx.text
+            .asDriver()
+            .drive { [weak self] text in
+                self?.viewModel.emailTextInput.onNext(text ?? "")
+                // textの情報ハンドル
+            }
+            .disposed(by: disposeBag)
         
-        passwordTextField.rx.text.asDriver().drive { [weak self] text in
-            // text情報のハンドル
-            self?.viewModel.passwordTextInput.onNext(text ?? "")
-        }.disposed(by: disposeBag)
+        passwordTextField.rx.text
+            .asDriver()
+            .drive { [weak self] text in
+                self?.viewModel.passwordTextInput.onNext(text ?? "")
+                // textの情報ハンドル
+            }
+            .disposed(by: disposeBag)
         
-        registerButton.rx.tap.asDriver().drive { [weak self]_ in
-            self?.createUserToFireAuth()
-        }.disposed(by: disposeBag)
-
+        registerButton.rx.tap
+            .asDriver()
+            .drive { [weak self] _ in
+                // 登録時の処理
+                self?.createUser()
+            }
+            .disposed(by: disposeBag)
+        
+        // viewmodelのbinding
+        viewModel.validRegisterDriver
+            .drive { validAll in
+                self.registerButton.isEnabled = validAll
+                self.registerButton.backgroundColor = validAll ? .rgb(red: 227, green: 48, blue: 78) : .init(white: 0.7, alpha: 1)
+            }
+            .disposed(by: disposeBag)
     }
     
-    private func createUserToFireAuth() {
-        guard let email = emailTextField.text, let password = passwordTextField.text else {
-            return
-        }
-        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
-            if let error = error {
-                print("auth情報の保存に失敗", error)
-                return
+    private func createUser() {
+        let user = User(name: nameTextField.text, email: emailTextField.text, password: nameTextField.text)
+        Auth.createUserToFireAuth(email: emailTextField.text,
+                                  password: passwordTextField.text,
+                                  name: nameTextField.text) {  result in
+            if result {
+                print("処理が完了", result)
+                self.dismiss(animated: true)
+            } else {
+                print("処理が失敗")
             }
-            
-            guard let uid = result?.user.uid else {
-                return
-            }
-            
-            self.setUserDataToFirestore(uid: uid, email: email)
-        }
-    }
-    
-    private func setUserDataToFirestore(uid: String, email: String) {
-        
-        guard let name = nameTextField .text else { return }
-        let document = [
-            "name" : name,
-            "email" : email,
-            "createdAt" : Timestamp()
-        ] as [String : Any]
-        
-        Firestore.firestore().collection("users").document(uid).setData(document) {
-            err in
-            if let err = err {
-                print("ユーザー情報の保存に失敗", err)
-                return
-            }
-            print("ユーザー情報の保存に成功")
         }
     }
 }

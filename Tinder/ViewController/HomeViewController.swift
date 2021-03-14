@@ -14,6 +14,14 @@ class HomeViewController: UIViewController {
         // Do any additional setup after loading the view.¥
         self.view.backgroundColor = .white
         setupView()
+        
+        // autolayoutが表示される前に、画面を遷移させるようにすると、遷移がうまく以下なので、dispatchで処理を遅らせる
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            let registerController = RegisterViewController()
+            registerController.modalPresentationStyle = .fullScreen
+            self.present(registerController, animated: true)
+        }
     }
 
     private func setupView() {
