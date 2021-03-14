@@ -9,7 +9,7 @@ import Firebase
 
 extension Auth {
     
-    static func createUserToFireAuth(email: String?, password: String?, name: String?) {
+    static func createUserToFireAuth(email: String?, password: String?, name: String?, completion: @escaping (Bool) -> ()) {
         guard let email = email, let password = password else {
             return
         }
@@ -23,14 +23,16 @@ extension Auth {
                 return
             }
             
-            Firestore.setUserDataToFirestore(uid: uid, email: email, name: name)
+            Firestore.setUserDataToFirestore(uid: uid, email: email, name: name) { result in
+                completion(result)
+            }
         }
     }
 }
 
 extension Firestore {
     
-    static func setUserDataToFirestore(uid: String, email: String, name: String?) {
+    static func setUserDataToFirestore(uid: String, email: String, name: String?, completion: @escaping (Bool) -> ()) {
         
         guard let name = name else { return }
         let document = [
@@ -45,7 +47,9 @@ extension Firestore {
                 print("ユーザー情報の保存に失敗", err)
                 return
             }
+            completion(true)
             print("ユーザー情報の保存に成功")
         }
+        
     }
 }
