@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
     
@@ -17,7 +18,7 @@ class LoginViewController: UIViewController {
     private let nameTextField: UITextField = RegisterTextField.init(frame: .zero, type: .name)
     private let emailTextField: UITextField = RegisterTextField.init(frame: .zero, type: .email)
     private let passwordTextField: UITextField = RegisterTextField.init(frame: .zero, type: .password)
-    private let registerButton: UIButton = RegisterButton(text: "ログイン")
+    private let loginButton: UIButton = RegisterButton(text: "ログイン")
     private let dontHaveAcctountButton = UIButton(type: .system).createAboutAccountButton(title: "アカウントをお持ちでない方はこちら")
     
     override func viewDidLoad() {
@@ -40,7 +41,7 @@ class LoginViewController: UIViewController {
     }
     
     private func setupLayout() {
-        let baseStackView = UIStackView(arrangedSubviews: [ emailTextField, passwordTextField, registerButton])
+        let baseStackView = UIStackView(arrangedSubviews: [ emailTextField, passwordTextField, loginButton])
         baseStackView.axis = .vertical
         baseStackView.distribution = .fillEqually
         baseStackView.spacing = 20
@@ -59,5 +60,23 @@ class LoginViewController: UIViewController {
         dontHaveAcctountButton.rx.tap.asDriver().drive { [weak self] _ in
             self?.navigationController?.popViewController(animated: true)
         }.disposed(by: disposebag)
+        
+        loginButton.rx.tap.asDriver().drive { [weak self] _ in
+            self?.loginWithFireAuth()
+        }.disposed(by: disposebag)
+    }
+    
+    private func loginWithFireAuth() {
+        
+        let email = emailTextField.text ?? ""
+        let password = passwordTextField.text ?? ""
+        Auth.auth().signIn(withEmail: email, password: password) { (res, err) in
+            if let _ = err {
+                print("ログインに失敗しました")
+                return
+            }
+            print("ログインに成功")
+            self.dismiss(animated: true)
+        }
     }
 }
