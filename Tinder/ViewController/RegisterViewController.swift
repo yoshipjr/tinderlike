@@ -92,6 +92,14 @@ class RegisterViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
+        //buttonのbindings
+        alreadyHaveAcctountButton.rx.tap
+            .asDriver()
+            .drive{ [weak self] _ in
+                let login = LoginViewController()
+                self?.navigationController?.pushViewController(login, animated: true)
+            }
+            
         // viewmodelのbinding
         viewModel.validRegisterDriver
             .drive { validAll in
