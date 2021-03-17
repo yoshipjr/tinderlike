@@ -15,8 +15,8 @@ extension UIButton {
         return self
     }
     
-    func createAboutAccountButton() -> UIButton {
-        self.setTitle("既にアカウントをお持ちの方はこちら", for: .normal)
+    func createAboutAccountButton(title: String) -> UIButton {
+        self.setTitle(title, for: .normal)
         self.titleLabel?.font = .systemFont(ofSize: 14)
         return self
     }

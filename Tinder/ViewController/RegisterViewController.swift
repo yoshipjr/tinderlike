@@ -16,18 +16,23 @@ class RegisterViewController: UIViewController {
     private let viewModel = RegisterViewModel()
     
     // MARK: UIView
-    private let titleLabel: UILabel = RegisterTitleLabel()
+    private let titleLabel: UILabel = RegisterTitleLabel(text: "Tinder")
     private let nameTextField: UITextField = RegisterTextField.init(frame: .zero, type: .name)
     private let emailTextField: UITextField = RegisterTextField.init(frame: .zero, type: .email)
     private let passwordTextField: UITextField = RegisterTextField.init(frame: .zero, type: .password)
-    private let registerButton: UIButton = RegisterButton()
-    private let alreadyHaveAcctountButton = UIButton(type: .system).createAboutAccountButton()
+    private let registerButton: UIButton = RegisterButton(text: "登録")
+    private let alreadyHaveAcctountButton = UIButton(type: .system).createAboutAccountButton(title: "既にアカウントをお持ちの方はこちら")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupGradientLayer()
         setupLayout()
         setupBinding()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
     }
     
     private func setupGradientLayer() {
@@ -99,6 +104,7 @@ class RegisterViewController: UIViewController {
                 let login = LoginViewController()
                 self?.navigationController?.pushViewController(login, animated: true)
             }
+            .disposed(by: disposeBag)
             
         // viewmodelのbinding
         viewModel.validRegisterDriver
