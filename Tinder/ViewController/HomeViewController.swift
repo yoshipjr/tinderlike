@@ -14,6 +14,8 @@ import FirebaseAuth
 import FirebaseFirestore
 
 class HomeViewController: UIViewController {
+
+    private var user: User? 
     
     private let logoutButton: UIButton = {
         let button = UIButton(type: .system)
@@ -36,7 +38,11 @@ class HomeViewController: UIViewController {
         guard let uid = Auth.auth().currentUser?.uid else {
             return
         }
-        Firestore.fetchUserFromIFirestore(uid: uid)
+        Firestore.fetchUserFromIFirestore(uid: uid) { (user) in
+            if let user = user {
+                self.user = user
+            }
+        }
 
     }
     
