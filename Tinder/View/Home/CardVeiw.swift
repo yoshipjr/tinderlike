@@ -108,30 +108,10 @@ final class CardView: UIView {
 //            self.transform = .identity
 //        }
         if translation.x <= -120 {
-            UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.7, options: []) {
-
-                let degree: CGFloat = -600 / 40
-                let angle = degree * .pi / 180 // .pi　円周率を取得するプロパティ
-                let rotateTranslation = CGAffineTransform(rotationAngle: angle)
-                view.transform = rotateTranslation.translatedBy(x: -600, y: 100)
-                self.layoutIfNeeded()
-
-            } completion: { _ in
-                self.removeFromSuperview()
-            }
+            view.removeCardViewAnimation(x: -600)
 
         } else if translation.x >= 120 {
-            UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.7, options: []) {
-
-                let degree: CGFloat  = 600 / 40
-                let angle = degree * .pi / 180 // .pi　円周率を取得するプロパティ
-                let rotateTranslation = CGAffineTransform(rotationAngle: angle)
-                self.transform = rotateTranslation.translatedBy(x: translation.x, y: 100)
-                self.layoutIfNeeded()
-
-            } completion: { _ in
-                self.removeFromSuperview()
-            }
+            view.removeCardViewAnimation(x: 600)
 
         } else {
             UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.7, options: []) {
