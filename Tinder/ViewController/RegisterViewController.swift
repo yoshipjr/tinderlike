@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import FirebaseAuth
 import FirebaseFirestore
+import PKHUD
 
 class RegisterViewController: UIViewController {
     private let disposeBag = DisposeBag()
@@ -117,12 +118,15 @@ class RegisterViewController: UIViewController {
     
     private func createUser() {
         let user = User(name: nameTextField.text, email: emailTextField.text, password: nameTextField.text)
+        HUD.show(.progress)
         Auth.createUserToFireAuth(email: emailTextField.text,
                                   password: passwordTextField.text,
                                   name: nameTextField.text) {  result in
+            HUD.hide()
             if result {
                 print("処理が完了", result)
                 self.dismiss(animated: true)
+
             } else {
                 print("処理が失敗")
             }

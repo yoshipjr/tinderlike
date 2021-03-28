@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import FirebaseAuth
+import PKHUD
 
 class LoginViewController: UIViewController {
     
@@ -70,12 +71,14 @@ class LoginViewController: UIViewController {
         
         let email = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
+        HUD.show(.progress)
         Auth.auth().signIn(withEmail: email, password: password) { (res, err) in
             if let _ = err {
                 print("ログインに失敗しました")
                 return
             }
             print("ログインに成功")
+            HUD.hide()
             self.dismiss(animated: true)
         }
     }
