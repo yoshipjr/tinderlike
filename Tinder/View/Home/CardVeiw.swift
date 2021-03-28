@@ -50,16 +50,19 @@ final class CardView: UIView {
         return label
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(user: User) {
+        super.init(frame: .zero)
         
-        setupLayout()
+        setupLayout(user: user)
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panCardView))
         self.addGestureRecognizer(panGesture)
     }
     
     @objc private func panCardView(gesture: UIPanGestureRecognizer) {
         let translation = gesture.translation(in: self)
+        guard let view = gesture.view else {
+            return
+        }
         // 動きがある場合の動き
         if gesture.state == .changed {
             self.handlePanChange(translation: translation)
@@ -69,7 +72,7 @@ final class CardView: UIView {
 //                self.transform = .identity
 //                self.layoutIfNeeded()
 //            }
-            self.handlePanEnded()
+            self.handlePanEnded(view: view, translation: translation)
         }
     }
     
@@ -99,21 +102,48 @@ final class CardView: UIView {
         }
     }
     
-    private func handlePanEnded() {
+    private func handlePanEnded(view: UIView, translation: CGPoint) {
 //        let animation = UIViewPropertyAnimator(duration: 0.3, curve: .easeInOut) {
 //            //元に戻す動き
 //            self.transform = .identity
 //        }
-        let animation = UIViewPropertyAnimator(duration: 1, dampingRatio: 0.5) {
-            self.transform = .identity
-            [self.goodLabel, self.nopeLabel].forEach {
-                $0.alpha = 0
+        if translation.x <= -120 {
+            UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.7, options: []) {
+
+                let degree: CGFloat = -600 / 40
+                let angle = degree * .pi / 180 // .pi　円周率を取得するプロパティ
+                let rotateTranslation = CGAffineTransform(rotationAngle: angle)
+                view.transform = rotateTranslation.translatedBy(x: -600, y: 100)
+                self.layoutIfNeeded()
+
+            } completion: { _ in
+                self.removeFromSuperview()
+            }
+
+        } else if translation.x >= 120 {
+            UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.7, options: []) {
+
+                let degree: CGFloat  = 600 / 40
+                let angle = degree * .pi / 180 // .pi　円周率を取得するプロパティ
+                let rotateTranslation = CGAffineTransform(rotationAngle: angle)
+                self.transform = rotateTranslation.translatedBy(x: translation.x, y: 100)
+                self.layoutIfNeeded()
+
+            } completion: { _ in
+                self.removeFromSuperview()
+            }
+
+        } else {
+            UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.7, options: []) {
+                self.transform = .identity
+                self.layoutIfNeeded()
+                self.goodLabel.alpha = 0
+                self.nopeLabel.alpha = 0
             }
         }
-        animation.startAnimation()
     }
     
-    private func setupLayout() {
+    private func setupLayout(user: User) {
         let infoVerticalStackview = UIStackView(arrangedSubviews: [residenceLabel, hobbyLabel, introductionLabel])
         infoVerticalStackview.axis = .vertical
         
@@ -136,6 +166,10 @@ final class CardView: UIView {
         nameLabel.anchor(bottom: baseStackView.topAnchor, left: cardImageView.leftAnchor, bottomPadding: 10, leftPadding: 20)
         goodLabel.anchor(top: cardImageView.topAnchor, left: cardImageView.leftAnchor, width: 140, height: 55, topPadding: 25, leftPadding: 20)
         nopeLabel.anchor(top: cardImageView.topAnchor, right: cardImageView.rightAnchor, width: 140, height: 55, topPadding: 25, rightPadding: 20)
+
+        // ユーザー情報ビューに反映
+        nameLabel.text = user.name
+        introductionLabel.text = user.email
     }
     
     required init?(coder: NSCoder) {

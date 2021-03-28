@@ -117,7 +117,6 @@ class RegisterViewController: UIViewController {
     }
     
     private func createUser() {
-        let user = User(name: nameTextField.text, email: emailTextField.text, password: nameTextField.text)
         HUD.show(.progress)
         Auth.createUserToFireAuth(email: emailTextField.text,
                                   password: passwordTextField.text,
