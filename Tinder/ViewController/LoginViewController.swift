@@ -68,18 +68,17 @@ class LoginViewController: UIViewController {
     }
     
     private func loginWithFireAuth() {
-        
+
         let email = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
         HUD.show(.progress)
-        Auth.auth().signIn(withEmail: email, password: password) { (res, err) in
-            if let _ = err {
-                print("ログインに失敗しました")
-                return
-            }
-            print("ログインに成功")
+        Auth.loginWithFireAuth(email: email, password: password) { (result) in
             HUD.hide()
-            self.dismiss(animated: true)
+            if result {
+                self.dismiss(animated: true)
+            } else {
+
+            }
         }
     }
 }

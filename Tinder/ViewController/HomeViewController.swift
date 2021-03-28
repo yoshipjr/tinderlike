@@ -5,8 +5,13 @@
 //  Created by 北原義久 on 2021/02/07.
 //
 
+// testuser testtest
+// email test@testgmail.com
+// password testtesttest
+
 import UIKit
 import FirebaseAuth
+import FirebaseFirestore
 
 class HomeViewController: UIViewController {
     
@@ -23,6 +28,16 @@ class HomeViewController: UIViewController {
         setupView()
         
         // autolayoutが表示される前に、画面を遷移させるようにすると、遷移がうまく以下なので、dispatchで処理を遅らせる
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        guard let uid = Auth.auth().currentUser?.uid else {
+            return
+        }
+        Firestore.fetchUserFromIFirestore(uid: uid)
+
     }
     
     override func viewDidAppear(_ animated: Bool) {

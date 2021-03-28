@@ -6,6 +6,7 @@
 //
 
 import Firebase
+import FirebaseFirestore
 
 extension Auth {
     
@@ -26,6 +27,19 @@ extension Auth {
             Firestore.setUserDataToFirestore(uid: uid, email: email, name: name) { result in
                 completion(result)
             }
+        }
+    }
+
+    static func loginWithFireAuth(email: String, password: String, completion: @escaping (Bool) -> Void) {
+
+        Auth.auth().signIn(withEmail: email, password: password) { (res, err) in
+            if let _ = err {
+                print("ログインに失敗しました")
+                completion(false)
+                return
+            }
+            completion(true)
+            print("ログインに成功")
         }
     }
 }
@@ -53,16 +67,16 @@ extension Firestore {
         
     }
 
-    static func loginWithFireAuth(email: String, password: String, completion: @escaping (Bool) -> Void) {
-
-        Auth.auth().signIn(withEmail: email, password: password) { (res, err) in
-            if let _ = err {
-                print("ログインに失敗しました")
-                completion(false)
+    static  func fetchUserFromIFirestore(uid: String) {
+        Firestore.firestore().collection("users").document(uid).getDocument { (snapshot, error) in
+            if let error = error {
+                print("ユーザー情報の取得に失敗", error)
                 return
             }
-            completion(true)
-            print("ログインに成功")
+
+            guard let data = snapshot?.data() else { return }
+
+            print(data)
         }
     }
 }
