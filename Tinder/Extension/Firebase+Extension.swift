@@ -52,4 +52,17 @@ extension Firestore {
         }
         
     }
+
+    static func loginWithFireAuth(email: String, password: String, completion: @escaping (Bool) -> Void) {
+
+        Auth.auth().signIn(withEmail: email, password: password) { (res, err) in
+            if let _ = err {
+                print("ログインに失敗しました")
+                completion(false)
+                return
+            }
+            completion(true)
+            print("ログインに成功")
+        }
+    }
 }
