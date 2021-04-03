@@ -10,15 +10,13 @@ import UIKit
 
 final class CardView: UIView {
     
-    let cardImageView: UIImageView = {
-        let iv = UIImageView()
-        iv.backgroundColor = .brown
-        iv.layer.cornerRadius = 10
-        iv.contentMode = .scaleAspectFill
-        iv.clipsToBounds = true
-        iv.image = UIImage(named: "test_sample")
-        return iv
-    }()
+    private let gradientLayer = CAGradientLayer()
+    
+    // MARK: UIView
+    private let nopeLabel = CardInfoLabel(frame: .zero, type: .nope)
+    private let goodLabel = CardInfoLabel(frame: .zero, type: .good)
+    private let infoButton = UIButton(type: .system).createCardInfoButton()
+    private let cardImageView = CardImageView(frame: .zero)
     
     let nameLabel: UILabel = {
         let label = UILabel()
@@ -26,14 +24,6 @@ final class CardView: UIView {
         label.textColor = .white
         label.text = "Taro 22"
         return label
-    }()
-    
-    let infoButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: "comment_active"), for: .normal)
-        button.tintColor = .white
-        button.imageView?.contentMode = .scaleToFill
-        return button
     }()
     
     let residenceLabel: UILabel = {
@@ -60,37 +50,6 @@ final class CardView: UIView {
         return label
     }()
     
-    let goodLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 45)
-        label.text = "GOOD"
-        
-        label.layer.borderWidth = 3
-        label.layer.borderColor = UIColor.rgb(red: 137, green: 223, blue: 86).cgColor
-        label.layer.cornerRadius = 10
-        label.alpha = 0
-        
-        label.textColor = UIColor.rgb(red: 137, green: 223, blue: 86)
-        label.textAlignment = .center
-        return label
-    }()
-    
-    let nopeLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 45)
-        label.text = "NOPE"
-        
-        label.layer.borderWidth = 3
-        label.layer.borderColor = UIColor.rgb(red: 222, green: 110, blue: 110).cgColor
-        label.layer.cornerRadius = 10
-        label.alpha = 0
-        
-        label.textColor = .rgb(red: 222, green: 110, blue: 110)
-        label.textAlignment = .center
-        return label
-    }()
-    
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -112,6 +71,16 @@ final class CardView: UIView {
 //            }
             self.handlePanEnded()
         }
+    }
+    
+    private func setupGradientLayer() {
+        gradientLayer.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
+        gradientLayer.locations = [0.3, 1.1]
+        cardImageView.layer.addSublayer(gradientLayer)
+    }
+    
+    override func layoutSubviews() {
+        gradientLayer.frame = self.bounds
     }
     
     private func handlePanChange(translation: CGPoint) {
